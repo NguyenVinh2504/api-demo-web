@@ -1,18 +1,26 @@
 import {
   Pagination,
+  PaginationButton,
   PaginationContent,
   PaginationEllipsis,
   PaginationItem,
-  PaginationLink,
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
 
-function AppPagination() {
-  const RANGE = 2;
-  const currentPage = 16;
-  const pageTotal = 20;
+type AppPaginationProps = {
+  currentPage: number;
+  pageTotal: number;
+  range?: number;
+  onCurrentPage: (page: number, totalPages: number) => () => void;
+};
 
+function AppPagination({
+  currentPage,
+  onCurrentPage,
+  pageTotal,
+  range: RANGE = 2,
+}: AppPaginationProps) {
   const renderPagination = () => {
     let isDot = false;
     const renderDot = (index: number) => {
@@ -58,9 +66,12 @@ function AppPagination() {
         }
         return (
           <PaginationItem key={index}>
-            <PaginationLink href="#" isActive={pageNumber === currentPage}>
+            <PaginationButton
+              isActive={pageNumber === currentPage}
+              onClick={onCurrentPage(pageNumber, pageTotal)}
+            >
               {pageNumber}
-            </PaginationLink>
+            </PaginationButton>
           </PaginationItem>
         );
       });
@@ -70,12 +81,13 @@ function AppPagination() {
     <Pagination>
       <PaginationContent>
         <PaginationItem>
-          <PaginationPrevious href="#" />
+          <PaginationPrevious
+            onClick={onCurrentPage(currentPage - 1, pageTotal)}
+          />
         </PaginationItem>
         {renderPagination()}
-
         <PaginationItem>
-          <PaginationNext href="#" />
+          <PaginationNext onClick={onCurrentPage(currentPage + 1, pageTotal)} />
         </PaginationItem>
       </PaginationContent>
     </Pagination>

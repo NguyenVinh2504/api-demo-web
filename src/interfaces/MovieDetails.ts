@@ -33,7 +33,7 @@ export interface BelongsToCollection {
 }
 
 // Định nghĩa interface cho Movie Details
-export interface MovieDetails {
+export interface IMovieDetails {
   adult: boolean;
   backdrop_path: string;
   belongs_to_collection: BelongsToCollection | null; // Nếu có thông tin cụ thể, bạn có thể định nghĩa thêm interface cho Collection

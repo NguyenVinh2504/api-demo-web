@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/sidebar";
 import { paths } from "@/routes/path";
 
-import { Home, Search } from "lucide-react";
+import { Home } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
 const items = [
@@ -20,11 +20,6 @@ const items = [
     url: paths.home,
     icon: Home,
     isActive: true,
-  },
-  {
-    title: "Search",
-    url: paths.search,
-    icon: Search,
   },
 ];
 

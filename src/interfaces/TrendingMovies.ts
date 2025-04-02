@@ -1,24 +1,8 @@
-export interface TrendingMovies {
-  page: number;
-  results: MovieResult[];
-  total_pages: number;
-  total_results: number;
-}
+import { IPaginatedResponse } from "./PaginatedResponse";
+import { MovieSearchResult } from "./SearchMovies";
 
-export interface MovieResult {
-  backdrop_path: string;
-  id: number;
-  title: string;
-  original_title: string;
-  overview: string;
-  poster_path: string;
+export type ITrendingMovies = IPaginatedResponse<MovieResult>;
+
+export interface MovieResult extends MovieSearchResult {
   media_type: string;
-  adult: boolean;
-  original_language: string;
-  genre_ids: number[];
-  popularity: number;
-  release_date: string;
-  video: boolean;
-  vote_average: number;
-  vote_count: number;
 }
