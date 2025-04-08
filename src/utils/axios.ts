@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const HOST_API = "http://localhost:3000";
+const HOST_API = "https://api-movies-f196.onrender.com";
 
 const axiosInstance = axios.create({
   baseURL: HOST_API,
